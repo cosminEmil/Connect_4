@@ -19,11 +19,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 window.location.reload();
                 return 0;
             }
-            down(button, i);
             left(button, i);
             right(button, i);
-            mainDiag(button, i);
-            secondaryDiag(button, i);
+            checkWinner(button, i);
         });
         if (i <= 7) {
             button.setAttribute("class", "row_1");
@@ -54,17 +52,19 @@ function checkColor(btnColor) {
     return 0;
 }
 
-function down(button, btnIndex) {
-    let j = 0, i = btnIndex, winCnt = 0;
-    while (j < 3) {
-        if (button.innerText == buttons[i + 6].innerText) {
-            ++winCnt;
+function checkWinner(button, btnIndex) {
+    for (let k = 0, adder = 5; k < 3; ++k, ++adder) {
+        let j = 0; i = btnIndex, winCnt = 0;
+        while (j < 3) {
+            if (button.innerText == buttons[i + adder].innerText) {
+                ++winCnt;
+            }
+            ++j;
+            i += adder + 1;
         }
-        ++j;
-        i += 7;
-    }
-    if (winCnt == 3) {
-        checkColor(button.innerText);
+        if (winCnt == 3) {
+            checkColor(button.innerText);
+        }
     }
 }
 
@@ -90,34 +90,6 @@ function right(button, btnIndex) {
         }
         ++j;
         ++i;
-    }
-    if (winCnt == 3) {
-        checkColor(button.innerText);
-    }
-}
-
-function mainDiag(button, btnIndex) {
-    let j = 0, i = btnIndex, winCnt = 0;
-    while (j < 3) {
-        if (button.innerText == buttons[i + 7].innerText) {
-            ++winCnt;
-        }
-        ++j;
-        i += 8;
-    }
-    if (winCnt == 3) {
-        checkColor(button.innerText);
-    }
-}
-
-function secondaryDiag(button, btnIndex) {
-    let j = 0, i = btnIndex, winCnt = 0;
-    while (j < 3) {
-        if (button.innerText == buttons[i + 5].innerText) {
-            ++winCnt;
-        }
-        ++j;
-        i += 6;
     }
     if (winCnt == 3) {
         checkColor(button.innerText);
