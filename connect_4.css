@@ -1,0 +1,59 @@
+#buttons button {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    color: transparent;
+}
+
+#btn1, #btn8, #btn15, #btn22, #btn29, #btn36 {
+    left: 25%;
+}
+
+#btn2, #btn9, #btn16, #btn23, #btn30, #btn37 {
+    left: 30%;
+}
+
+#btn3, #btn10, #btn17, #btn24, #btn31, #btn38 {
+    left: 35%;
+}
+
+#btn4, #btn11, #btn18, #btn25, #btn32, #btn39 {
+    left: 40%;
+}
+
+#btn5, #btn12, #btn19, #btn26, #btn33, #btn40 {
+    left: 45%;
+}
+
+#btn6, #btn13, #btn20, #btn27, #btn34, #btn41 {
+    left: 50%;
+}
+
+#btn7, #btn14, #btn21, #btn28, #btn35, #btn42 {
+    left: 55%;
+}
+
+.row_1 {
+    top: 10%;
+}
+
+.row_2 {
+    top: 17%;
+}
+
+.row_3 {
+    top: 24%;
+}
+
+.row_4 {
+    top: 31%;
+}
+
+.row_5 {
+    top: 38%;
+}
+
+.row_6 {
+    top: 45%;
+}
