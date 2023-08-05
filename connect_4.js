@@ -7,8 +7,7 @@ function makeRows(rows, cols) {
     container.style.setProperty("--grid-cols", cols);
     for (let cellPos = 0; cellPos < rows * cols; ++cellPos) {
         let cell = document.createElement("div");
-        cell.innerHTML = cellPos;
-        cell.addEventListener("click", function() {
+        cell.addEventListener("click", function() { //add color to the cell + winner check
             if (players_turn % 2 == 0) {
                 cell.style.backgroundColor = "red";
             } else if (players_turn % 2) {
@@ -20,12 +19,11 @@ function makeRows(rows, cols) {
                 window.location.reload();
                 return 0;
             }
-            checkTheWinner(cell.style.backgroundColor, cellPos, 1);
-            checkTheWinner(cell.style.backgroundColor, cellPos, -1);
-            checkTheWinner(cell.style.backgroundColor, cellPos, 6);
-            checkTheWinner(cell.style.backgroundColor, cellPos, 7);
-            checkTheWinner(cell.style.backgroundColor, cellPos, 8);
-            
+            checkTheWinner(cell.style.backgroundColor, cellPos, 1); // check the right part 
+            checkTheWinner(cell.style.backgroundColor, cellPos, -1); // check the let part
+            checkTheWinner(cell.style.backgroundColor, cellPos, 6); // check the down left diagonal
+            checkTheWinner(cell.style.backgroundColor, cellPos, 7); // check the down part
+            checkTheWinner(cell.style.backgroundColor, cellPos, 8); // check the down right diagonal
         });
         container.appendChild(cell).className = "grid-item";
     }
