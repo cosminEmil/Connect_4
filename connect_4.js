@@ -5,9 +5,9 @@ let players_turn = 0;
 function makeRows(rows, cols) {
     container.style.setProperty("--grid-rows", rows);
     container.style.setProperty("--grid-cols", cols);
-    for (let i = 1; i <= rows * cols; ++i) {
+    for (let cellPos = 0; cellPos < rows * cols; ++cellPos) {
         let cell = document.createElement("div");
-        cell.innerHTML = i;
+        cell.innerHTML = cellPos;
         cell.addEventListener("click", function() {
             if (players_turn % 2 == 0) {
                 cell.style.backgroundColor = "red";
@@ -20,6 +20,12 @@ function makeRows(rows, cols) {
                 window.location.reload();
                 return 0;
             }
+            checkTheWinner(cell.style.backgroundColor, cellPos, 1);
+            checkTheWinner(cell.style.backgroundColor, cellPos, -1);
+            checkTheWinner(cell.style.backgroundColor, cellPos, 6);
+            checkTheWinner(cell.style.backgroundColor, cellPos, 7);
+            checkTheWinner(cell.style.backgroundColor, cellPos, 8);
+            
         });
         container.appendChild(cell).className = "grid-item";
     }
@@ -27,32 +33,19 @@ function makeRows(rows, cols) {
 
 makeRows(6, 7);
 
-function left(cellIndex) {
-
-}
-
-function leftDiagonal(cellIndex) {
-
-}
-
-function down(cellIndex) {
-    for (let i = 1; i <= 7; ++i) {
-        let redCounter = 0, yellowCounter = 0;
-        for (let j = i; j <= i + 35; j += 7) {
-            
-            if (elements[j].style.backgroundColor == 'red') {
-                ++redCounter;
-            } else if (elements[j].style.backgroundColor == 'yellow') {
-                ++yellowCounter;
-            }
+function checkTheWinner(cellColor, cellPos, adder) {
+    let winnerCnt = 0, cnt = 0;
+    for (let i = cellPos; cnt < 4; ++cnt, i += adder) {
+        if (elements[i].style.backgroundColor == cellColor) {
+            ++winnerCnt;
         }
     }
-}
-
-function rightDiagonal(cellIndex) {
-
-}
-
-function right(cellIndex) {
-
+    if (winnerCnt == 4) {
+        if (cellColor == "red") {
+            alert("Player 1 wins");
+        } else {
+            alert("Player 2 wins");
+        }
+        window.location.reload();
+    }
 }
