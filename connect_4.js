@@ -24,7 +24,6 @@ function makeRows(rows, cols) {
                     window.location.reload();
                     return 0;
                 }
-                
                 checkTheWinner(matrix[i][j], i, j, 0, -1);
                 checkTheWinner(matrix[i][j], i, j, 1, -1);
                 checkTheWinner(matrix[i][j], i, j, 1, 0);
